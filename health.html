@@ -1,0 +1,29 @@
+---
+layout: default
+title: Health & Fitness
+permalink: /health/
+---
+<header class="mb-12">
+  <h1 class="text-5xl font-extrabold dark:text-white tracking-tight mb-4">Kitchen & Fitness</h1>
+  <p class="text-slate-500 text-lg">My journey with nutritious food and healthy living.</p>
+</header>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+  {% for post in site.posts %}
+    {% if post.categories contains 'health' %}
+    <a href="{{ post.url }}" class="block group bg-slate-50 dark:bg-[#111] rounded-2xl overflow-hidden hover:shadow-xl hover:shadow-teal-500/10 transition duration-300">
+      <div class="p-8 h-full flex flex-col">
+        <div class="mb-auto">
+          <span class="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase tracking-widest mb-2 block">Recipe / Tip</span>
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-teal-600 transition">{{ post.title }}</h2>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+        </div>
+        <div class="mt-6 pt-6 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center">
+          <span class="text-xs text-slate-400">{{ post.date | date: "%b %d" }}</span>
+          <span class="text-sm font-semibold text-slate-900 dark:text-white group-hover:translate-x-1 transition">Read &rarr;</span>
+        </div>
+      </div>
+    </a>
+    {% endif %}
+  {% endfor %}
+</div>

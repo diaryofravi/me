@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} | {{ site.title }}</title>
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  <style>body { transition: background-color 0.3s, color 0.3s; }</style>
+</head>
+<body class="bg-white text-slate-900 dark:bg-[#0a0a0a] dark:text-slate-200 flex flex-col min-h-screen font-sans antialiased selection:bg-teal-200 dark:selection:bg-teal-900">
+
+  <header class="w-full max-w-4xl mx-auto p-6 flex flex-wrap justify-between items-center sticky top-0 bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-sm z-50">
+    <a href="/" class="text-xl font-extrabold tracking-tighter hover:text-teal-600 dark:hover:text-teal-400">RH.</a>
+    
+    <nav class="flex items-center gap-4 sm:gap-6 text-sm font-medium text-slate-500 dark:text-slate-400">
+      <a href="/stories/" class="hover:text-black dark:hover:text-white transition">Stories</a>
+      <a href="/health/" class="hover:text-black dark:hover:text-white transition">Health</a>
+      <a href="/gallery/" class="hover:text-black dark:hover:text-white transition">Gallery</a>
+      <a href="/media/" class="hover:text-black dark:hover:text-white transition">Lounge</a>
+      <button id="theme-toggle" class="focus:outline-none pl-3 border-l border-slate-300 dark:border-slate-700">
+        <span id="sun-icon" class="hidden">☀</span>
+        <span id="moon-icon" class="hidden">☾</span>
+      </button>
+    </nav>
+  </header>
+
+  <main class="flex-grow w-full max-w-4xl mx-auto p-6 mt-4 mb-16 animate-fade-in-up">
+    {{ content }}
+  </main>
+
+  <footer class="w-full max-w-4xl mx-auto p-6 border-t border-slate-100 dark:border-slate-900 text-xs text-slate-400 flex justify-between">
+    <p>&copy; {{ "now" | date: "%Y" }} Raviraj Halarnekar</p>
+    <div class="flex gap-4">
+      <a href="mailto:{{ site.email }}" class="hover:text-teal-500">Email</a>
+      <a href="#" class="hover:text-teal-500">GitHub</a>
+    </div>
+  </footer>
+
+  <script>
+    // Dark Mode Logic
+    const btn = document.getElementById('theme-toggle');
+    const sun = document.getElementById('sun-icon');
+    const moon = document.getElementById('moon-icon');
+    
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      sun.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.remove('dark');
+      moon.classList.remove('hidden');
+    }
+
+    btn.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      if (document.documentElement.classList.contains('dark')) {
+        localStorage.theme = 'dark';
+        sun.classList.remove('hidden');
+        moon.classList.add('hidden');
+      } else {
+        localStorage.theme = 'light';
+        moon.classList.remove('hidden');
+        sun.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>

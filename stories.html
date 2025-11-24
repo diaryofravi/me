@@ -1,0 +1,22 @@
+---
+layout: default
+title: Stories Corner
+permalink: /stories/
+---
+<h1 class="text-5xl font-extrabold mb-16 dark:text-white tracking-tight">Stories Corner</h1>
+
+<div class="border-l-2 border-slate-100 dark:border-slate-800 pl-8 space-y-16">
+  {% for post in site.posts %}
+    {% if post.categories contains 'stories' %}
+    <div class="relative group">
+      <div class="absolute -left-[39px] top-2 w-5 h-5 bg-slate-200 dark:bg-slate-800 rounded-full border-4 border-white dark:border-[#0a0a0a] group-hover:bg-teal-500 transition"></div>
+      <span class="text-xs font-mono text-slate-400 mb-2 block uppercase tracking-wide">{{ post.date | date: "%B %d, %Y" }}</span>
+      <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-3">
+        <a href="{{ post.url }}" class="hover:underline decoration-teal-500 underline-offset-4">{{ post.title }}</a>
+      </h2>
+      <p class="text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+      <a href="{{ post.url }}" class="inline-block mt-4 text-sm font-bold text-teal-600 dark:text-teal-400 hover:text-teal-800">Read Story &rarr;</a>
+    </div>
+    {% endif %}
+  {% endfor %}
+</div>

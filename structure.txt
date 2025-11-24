@@ -1,0 +1,13 @@
+username.github.io/
+├── _config.yml             # Site Settings
+├── _layouts/
+│   ├── default.html        # Main Theme (Nav, Footer, Dark Mode)
+│   └── post.html           # Template for your MD stories
+├── _posts/                 # YOUR CONTENT GOES HERE (Markdown)
+│   ├── 2025-01-01-sunset.md
+│   └── 2025-01-02-fish-curry.md
+├── index.html              # Home / About / Matrimony
+├── stories.html            # Stories List Page
+├── health.html             # Health List Page
+├── gallery.html            # Photos & Videos Page
+└── media.html              # Media Lounge Page

@@ -1,0 +1,16 @@
+---
+layout: default
+---
+<article>
+  <a href="javascript:history.back()" class="text-sm font-semibold text-slate-400 hover:text-teal-600 dark:hover:text-teal-400 mb-8 inline-block">&larr; Back</a>
+  
+  <header class="mb-10 border-b border-slate-100 dark:border-slate-800 pb-8">
+    <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white mb-4 tracking-tight">{{ page.title }}</h1>
+    <time class="text-sm font-mono text-slate-500">{{ page.date | date: "%B %d, %Y" }}</time>
+  </header>
+
+  <!-- Tailwind Prose Plugin automatically styles the Markdown content -->
+  <div class="prose prose-lg dark:prose-invert max-w-none prose-a:text-teal-600 dark:prose-a:text-teal-400 hover:prose-a:underline">
+    {{ content }}
+  </div>
+</article>

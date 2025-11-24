@@ -5,7 +5,9 @@ permalink: /
 ---
 <section class="flex flex-col justify-center min-h-[60vh]">
   <h1 class="text-6xl sm:text-8xl font-black tracking-tighter mb-8 text-slate-900 dark:text-white leading-[0.9]">
-  Hello, I'm <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-emerald-600">Ravi!</span>
+  Hello, I'm <br> 
+  <!-- CHANGED: Converted colored gradient to a Slate/Grayscale gradient -->
+  <span class="text-transparent bg-clip-text bg-gradient-to-r from-slate-700 to-slate-500 dark:from-slate-200 dark:to-slate-500">Ravi!</span>
   </h1>
   
   <div class="text-xl sm:text-2xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl font-light">
@@ -15,13 +17,14 @@ permalink: /
 
   <!-- Social Icons -->
   <div class="mt-10 flex gap-6 items-center">
-    <a href="mailto:{{ site.email }}" class="p-2 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-teal-100 dark:hover:bg-teal-900 transition" title="Email">
+    <!-- CHANGED: Hover colors updated from Teal/Blue/Indigo to Slate -->
+    <a href="mailto:{{ site.email }}" class="p-2 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition" title="Email">
        <svg class="w-6 h-6 text-slate-700 dark:text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
     </a>
-    <a href="https://t.me/YOUR_USERNAME" class="p-2 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-blue-100 dark:hover:bg-blue-900 transition" title="Telegram">
+    <a href="https://t.me/YOUR_USERNAME" class="p-2 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition" title="Telegram">
       <svg class="w-6 h-6 text-slate-700 dark:text-slate-300" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 11.944 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
     </a>
-    <a href="https://signal.me/#p/YOUR_USERNAME" class="p-2 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-indigo-100 dark:hover:bg-indigo-900 transition" title="Signal">
+    <a href="https://signal.me/#p/YOUR_USERNAME" class="p-2 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition" title="Signal">
       <svg class="w-6 h-6 text-slate-700 dark:text-slate-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.497 1.744 6.616 4.469 8.658.345.26.586.63.691 1.048l1.153 4.58c.23.918 1.379 1.279 2.064.648l4.062-3.74a1.66 1.66 0 0 1 1.118-.435c9.016.285 10.137-8.284 10.137-8.284C23.694 5.522 19.206 0 12 0z"/></svg>
     </a>
   </div>
@@ -32,7 +35,8 @@ permalink: /
   <div class="grid md:grid-cols-3 gap-12">
     <div>
       <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Core Values</h3>
-      <ul class="text-sm font-medium space-y-2 text-slate-800 dark:text-slate-300">
+      <!-- Optional: Added grayscale class here to ensure emojis don't break the monochrome feel -->
+      <ul class="text-sm font-medium space-y-2 text-slate-800 dark:text-slate-300 grayscale">
         <li>✨ Integrity & Ethics</li>
         <li>🌱 Minimalism</li>
         <li>🔇 Silence over Noise</li>

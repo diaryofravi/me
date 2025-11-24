@@ -2,7 +2,7 @@ title: My Personal Space
 email: domain.username@gmail.com
 description: "A Goan Sushegaad Life."
 url: "https://diaryofravi.github.io"
-baseurl: "/profile"
+baseurl: "/me"
 
 permalink: /:categories/:year/:month/:day/:title/
 markdown: kramdown

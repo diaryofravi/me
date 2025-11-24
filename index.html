@@ -3,7 +3,8 @@ layout: default
 title: About Me
 permalink: /
 ---
-<section class="flex flex-col justify-center min-h-[60vh]">
+<!-- Section 1: Intro -->
+<section class="flex flex-col justify-center min-h-[50vh]">
   <h1 class="text-6xl sm:text-8xl font-black tracking-tighter mb-8 text-neutral-900 dark:text-white leading-[0.9]">
   Hello, I'm <br> 
   <span class="text-black dark:text-white">Ravi!</span>
@@ -13,12 +14,24 @@ permalink: /
     <p class="mb-6">I live the <strong class="text-black dark:text-white font-semibold">Goan Sushegaad</strong> lifestyle—prioritizing peace, simplicity, and mental clarity.</p>
     <p>I am an introvert by nature, and a believer in ethical living.</p>
   </div>
+</section>
 
+<!-- Section 2: Matrimonial / Values & Socials -->
+<section class="mt-12 pt-10 border-t border-neutral-200 dark:border-neutral-800">
+  <div class="max-w-2xl">
+    <!-- Main Text -->
+    <p class="text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed mb-6">
+      I believe a home is built on shared silence and transparent conversation. I value simplicity and kindness. If you prefer a quiet evening walk over a loud party, we might get along.
+    </p>
 
-    <!-- Divider (Optional) -->
-    <div class="w-px h-8 bg-neutral-300 dark:bg-neutral-700 hidden sm:block"></div>
+    <!-- Values as a subtle inline row -->
+    <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium text-neutral-400 uppercase tracking-wide mb-10">
+      <span>✨ Integrity & Ethics</span>
+      <span>🌱 Minimalism</span>
+      <span>🔇 Silence over Noise</span>
+    </div>
 
-    <!-- 2. Social Icons -->
+    <!-- Social Icons (Moved Here) -->
     <div class="flex gap-4">
       <a href="mailto:{{ site.email }}" class="p-3 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-white hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition duration-300" title="Email">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
@@ -31,22 +44,5 @@ permalink: /
       </a>
     </div>
 
-  </div>
-</section>
-
-<!-- Matrimonial / Values Section -->
-<section class="mt-20 pt-10 border-t border-neutral-200 dark:border-neutral-800">
-  <div class="max-w-2xl">
-    <!-- Main Text -->
-    <p class="text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed mb-6">
-      I believe a home is built on shared silence and transparent conversation. I value simplicity and kindness. If you prefer a quiet evening walk over a loud party, we might get along.
-    </p>
-
-    <!-- Values as a subtle inline row -->
-    <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium text-neutral-400 uppercase tracking-wide">
-      <span>✨ Integrity & Ethics</span>
-      <span>🌱 Minimalism</span>
-      <span>🔇 Silence over Noise</span>
-    </div>
   </div>
 </section>

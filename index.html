@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Raviraj Halarnekar</title>
+  <title>Ravi</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
@@ -513,18 +513,35 @@
     .contact-sec h2 { color: var(--white); margin-bottom: .8rem; }
     .contact-sec .desc { color: var(--stone); margin: 0 auto 2.2rem; text-align: center; }
 
-    .contact-btn {
-      display: inline-block;
-      font-size: .88rem;
-      font-weight: 500;
-      color: var(--ink);
-      background: var(--white);
-      padding: .8rem 2.2rem;
-      border-radius: 999px;
+    .insta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
       text-decoration: none;
-      transition: background .2s, transform .15s;
+      color: var(--body);
+      border: 1px solid var(--rule);
+      padding: .75rem 1.5rem;
+      border-radius: 10px;
+      transition: border-color .2s, color .2s, transform .15s;
     }
-    .contact-btn:hover { background: var(--bg); transform: translateY(-1px); }
+
+    .insta-link:hover {
+      border-color: var(--earth);
+      color: var(--earth);
+      transform: translateY(-1px);
+    }
+
+    .insta-icon {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+
+    .insta-handle {
+      font-size: .88rem;
+      font-weight: 400;
+      letter-spacing: .02em;
+    }
 
     /* ── FOOTER ── */
     footer {
@@ -573,7 +590,7 @@
 
   <nav>
     <div class="nav-in">
-      <a class="nav-name" href="#">Raviraj Halarnekar</a>
+      <a class="nav-name" href="#">Ravi</a>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#photos">Photos</a></li>
@@ -591,20 +608,16 @@
         <!-- <img src="photo.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"> -->
         🧑
       </div>
-      <p class="hero-label">Matrimonial Profile · 2025</p>
-      <h1>Raviraj Halarnekar</h1>
+
+      <h1>Ravi</h1>
       <p class="hero-sub">Network Engineer. Mindful living.<br>Looking for something real and lasting.</p>
       <div class="hero-identity">
         <span class="ident-item">Introvert <em>·</em> INFJ</span>
-        <span class="ident-sep">/</span>
+        <span class="ident-sep">|</span>
         <span class="ident-item">Susegad Goenkar</span>
-        <span class="ident-sep">/</span>
+        <span class="ident-sep">|</span>
         <span class="ident-item">Network Engineer</span>
-        <span class="ident-sep">/</span>
-        <span class="ident-item">Spiritual</span>
       </div>
-      <a class="hero-btn" href="#contact">Say Hello</a>
-    </div>
   </div>
 
   <!-- ABOUT -->
@@ -621,11 +634,9 @@
           <div class="about-item"><span class="about-k">Age</span><span class="about-v">Mid 30s</span></div>
           <div class="about-item"><span class="about-k">City</span><span class="about-v">Bangalore, KA (from Goa)</span></div>
           <div class="about-item"><span class="about-k">Profession</span><span class="about-v">Network Engineer</span></div>
-          <div class="about-item"><span class="about-k">Education</span><span class="about-v">B.E. Computer Engineering</span></div>
-          <div class="about-item"><span class="about-k">Also</span><span class="about-v">Diploma in Computer Engg.</span></div>
-          <div class="about-item"><span class="about-k">Height</span><span class="about-v">178 cm</span></div>
+          <div class="about-item"><span class="about-k">Education</span><span class="about-v">B.E. Computer Science &amp; Systems Engg. · Diploma in Computer Engg.</span></div>
+          <div class="about-item"><span class="about-k">Height &amp; Weight</span><span class="about-v">178 cm · 75 kg</span></div>
           <div class="about-item"><span class="about-k">Lifestyle</span><span class="about-v">Minimalist · Health-conscious</span></div>
-          <div class="about-item"><span class="about-k">Relocation</span><span class="about-v">Can be discussed</span></div>
         </div>
       </div>
     </div>
@@ -720,7 +731,6 @@
           <div class="family-item"><span class="f-role">Mother</span><span class="f-detail">Retired Government Servant</span></div>
           <div class="family-item"><span class="f-role">Elder Sister</span><span class="f-detail">Educator</span></div>
           <div class="family-item"><span class="f-role">Younger Sister</span><span class="f-detail">Working in the UK</span></div>
-          <div class="family-item"><span class="f-role">Based in</span><span class="f-detail">Goa</span></div>
         </div>
       </div>
     </div>
@@ -779,12 +789,19 @@
       </div>
       <h2>Let's start with a hello.</h2>
       <p class="desc" style="color:#8c8078;max-width:420px;margin:0 auto 2.2rem;">If something here resonated, reach out. No formalities needed — a simple, honest note is enough.</p>
-      <a class="contact-btn" href="/cdn-cgi/l/email-protection#30495f454270555d51595c1e535f5d">✉ Write to me</a>
+      <a class="insta-link" href="https://www.instagram.com/ssh_ravi" target="_blank" rel="noopener">
+        <svg class="insta-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+        </svg>
+        <span class="insta-handle">@ssh_ravi</span>
+      </a>
     </div>
   </div>
 
   <footer>
-    <p>© 2025 Raviraj Halarnekar · Bangalore, India</p>
+    <p>© Ravi · Bangalore, India</p>
     <ul>
       <li><a href="#about">About</a></li>
       <li><a href="#family">Family</a></li>

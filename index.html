@@ -177,23 +177,15 @@
 
     .sec { padding: clamp(3rem, 8vw, 5.5rem) 1.5rem; }
 
+    /* Content sections: left-aligned, readable column */
     .sec-in {
-      max-width: 760px;
+      max-width: 720px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      text-align: center;
+      align-items: flex-start;
+      text-align: left;
     }
-
-    .sec-in .about-grid,
-    .sec-in .family-list,
-    .sec-in .interest-list,
-    .sec-in .quote-wrap,
-    .sec-in .lf-grid,
-    .sec-in .gallery { text-align: left; width: 100%; }
-
-    .sec-in .tag { align-self: flex-start; }
 
     .sec-alt { background: var(--bg); }
 
@@ -229,9 +221,9 @@
     p.desc {
       font-size: clamp(.88rem, 2vw, .97rem);
       color: var(--muted);
-      max-width: 560px;
-      line-height: 1.8;
-      margin-bottom: .8rem;
+      max-width: 640px;
+      line-height: 1.85;
+      margin-bottom: 1rem;
     }
 
     /* ── ABOUT GRID ── */
@@ -240,6 +232,7 @@
       grid-template-columns: repeat(3, 1fr);
       margin-top: 2rem;
       border-top: 1px solid var(--rule);
+      width: 100%;
     }
 
     .about-item {
@@ -270,6 +263,7 @@
       grid-template-columns: repeat(2, 1fr);
       margin-top: 1.8rem;
       border-top: 1px solid var(--rule);
+      width: 100%;
     }
 
     .interest-item {
@@ -294,6 +288,7 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 8px;
       margin-top: 2rem;
+      width: 100%;
     }
 
     .gal-item {
@@ -334,7 +329,6 @@
 
     .gal-item:hover .gal-label { opacity: 1; }
 
-    /* placeholder bg when image missing */
     .gal-item { min-height: 100px; }
 
     /* ── FAMILY LIST ── */
@@ -377,13 +371,15 @@
       padding: 1.5rem 2rem;
       border-radius: 0 10px 10px 0;
       margin-top: 1.8rem;
+      width: 100%;
+      max-width: 640px;
     }
 
     .quote-wrap p {
-      font-size: clamp(.95rem, 2.2vw, 1.1rem);
+      font-size: clamp(.95rem, 2.2vw, 1.05rem);
       font-style: italic;
       color: var(--ink);
-      line-height: 1.7;
+      line-height: 1.8;
     }
 
     /* ── LF CARDS ── */
@@ -533,7 +529,7 @@
 
     /* ── LARGE DESKTOP ── */
     @media (min-width: 1280px) {
-      .sec-in { max-width: 860px; }
+      .sec-in { max-width: 800px; }
       .about-grid { grid-template-columns: repeat(3, 1fr); }
     }
   </style>

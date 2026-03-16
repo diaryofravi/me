@@ -103,10 +103,7 @@
       border-bottom: 1px solid var(--rule);
     }
 
-    .hero-inner {
-      max-width: 560px;
-      margin: 0 auto;
-    }
+    .hero-inner { max-width: 560px; margin: 0 auto; }
 
     .photo {
       width: clamp(90px, 20vw, 120px);
@@ -123,11 +120,7 @@
       animation: up .8s ease both;
     }
 
-    .photo img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-    }
+    .photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 
     .hero h1 {
       font-size: clamp(2.2rem, 8vw, 4rem);
@@ -165,19 +158,12 @@
     }
 
     .ident-item em { font-style: normal; color: var(--earth-l); }
-
-    .ident-sep {
-      font-size: .7rem;
-      color: var(--stone);
-      font-weight: 300;
-    }
+    .ident-sep { font-size: .7rem; color: var(--stone); font-weight: 300; }
 
     /* ── SECTION BASE ── */
     section { border-bottom: 1px solid var(--rule); }
-
     .sec { padding: clamp(3rem, 8vw, 5.5rem) 1.5rem; }
 
-    /* Content sections: left-aligned, readable column */
     .sec-in {
       max-width: 720px;
       margin: 0 auto;
@@ -201,13 +187,7 @@
       gap: .7rem;
     }
 
-    .tag::after {
-      content: '';
-      display: block;
-      height: 1px;
-      width: 32px;
-      background: var(--stone);
-    }
+    .tag::after { content: ''; display: block; height: 1px; width: 32px; background: var(--stone); }
 
     h2 {
       font-size: clamp(1.5rem, 4vw, 2.4rem);
@@ -243,19 +223,8 @@
       gap: .2rem;
     }
 
-    .about-k {
-      font-size: .62rem;
-      font-weight: 500;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--stone);
-    }
-
-    .about-v {
-      font-size: clamp(.8rem, 2vw, .92rem);
-      font-weight: 400;
-      color: var(--ink);
-    }
+    .about-k { font-size: .62rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--stone); }
+    .about-v { font-size: clamp(.8rem, 2vw, .92rem); font-weight: 400; color: var(--ink); }
 
     /* ── INTEREST LIST ── */
     .interest-list {
@@ -275,12 +244,7 @@
     }
 
     .i-icon { font-size: .95rem; flex-shrink: 0; line-height: 1; }
-
-    .i-text {
-      font-size: clamp(.8rem, 2vw, .9rem);
-      font-weight: 400;
-      color: var(--body);
-    }
+    .i-text { font-size: clamp(.8rem, 2vw, .9rem); font-weight: 400; color: var(--body); }
 
     /* ── GALLERY ── */
     .gallery {
@@ -297,12 +261,11 @@
       border-radius: 10px;
       background: var(--surface);
       aspect-ratio: 4/3;
+      cursor: zoom-in;
+      min-height: 100px;
     }
 
-    .gal-item.gal-tall {
-      grid-row: span 2;
-      aspect-ratio: unset;
-    }
+    .gal-item.gal-tall { grid-row: span 2; aspect-ratio: unset; }
 
     .gal-item img {
       width: 100%; height: 100%;
@@ -329,7 +292,166 @@
 
     .gal-item:hover .gal-label { opacity: 1; }
 
-    .gal-item { min-height: 100px; }
+    /* ── LIGHTBOX ── */
+    .lb-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(10, 8, 6, 0.96);
+      backdrop-filter: blur(8px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lb-overlay.active { display: flex; }
+
+    /* Top bar */
+    .lb-top {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.4rem;
+      background: rgba(0,0,0,0.45);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .lb-title {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .lb-counter {
+      font-size: .7rem;
+      color: rgba(255,255,255,0.35);
+      font-weight: 300;
+      letter-spacing: .06em;
+    }
+
+    .lb-close {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      color: rgba(255,255,255,0.65);
+      font-size: 1.1rem;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .2s, color .2s;
+    }
+    .lb-close:hover { background: rgba(255,255,255,0.18); color: #fff; }
+
+    /* Main image stage */
+    .lb-stage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      padding: 54px 72px 90px;
+    }
+
+    .lb-img-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 88vw;
+      max-height: calc(100vh - 180px);
+    }
+
+    #lb-img {
+      max-width: 100%;
+      max-height: calc(100vh - 180px);
+      object-fit: contain;
+      border-radius: 5px;
+      box-shadow: 0 32px 100px rgba(0,0,0,0.8);
+      transition: opacity .22s ease;
+      display: block;
+      user-select: none;
+    }
+
+    #lb-img.fading { opacity: 0; }
+
+    /* Prev / Next buttons */
+    .lb-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 50%;
+      width: 46px;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: rgba(255,255,255,0.65);
+      transition: background .2s, color .2s, transform .2s;
+      z-index: 10;
+    }
+
+    .lb-btn:hover {
+      background: rgba(255,255,255,0.16);
+      color: #fff;
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    .lb-prev { left: -62px; }
+    .lb-next { right: -62px; }
+    .lb-btn svg { width: 18px; height: 18px; }
+
+    /* Thumbnail strip */
+    .lb-bottom {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: rgba(0,0,0,0.5);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 0 1.5rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .lb-bottom::-webkit-scrollbar { display: none; }
+
+    .lb-thumb {
+      width: 56px;
+      height: 56px;
+      border-radius: 5px;
+      overflow: hidden;
+      flex-shrink: 0;
+      cursor: pointer;
+      border: 2px solid transparent;
+      opacity: 0.45;
+      transition: opacity .2s, border-color .2s, transform .2s;
+    }
+
+    .lb-thumb:hover { opacity: 0.75; transform: scale(1.05); }
+
+    .lb-thumb.active {
+      border-color: var(--earth-l);
+      opacity: 1;
+      transform: scale(1.08);
+    }
+
+    .lb-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     /* ── FAMILY LIST ── */
     .family-list {
@@ -348,21 +470,8 @@
       gap: 1rem;
     }
 
-    .f-role {
-      font-size: .62rem;
-      font-weight: 500;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--stone);
-      flex-shrink: 0;
-    }
-
-    .f-detail {
-      font-size: clamp(.8rem, 2vw, .9rem);
-      font-weight: 400;
-      color: var(--body);
-      text-align: right;
-    }
+    .f-role { font-size: .62rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--stone); flex-shrink: 0; }
+    .f-detail { font-size: clamp(.8rem, 2vw, .9rem); font-weight: 400; color: var(--body); text-align: right; }
 
     /* ── QUOTE ── */
     .quote-wrap {
@@ -375,21 +484,10 @@
       max-width: 640px;
     }
 
-    .quote-wrap p {
-      font-size: clamp(.95rem, 2.2vw, 1.05rem);
-      font-style: italic;
-      color: var(--ink);
-      line-height: 1.8;
-    }
+    .quote-wrap p { font-size: clamp(.95rem, 2.2vw, 1.05rem); font-style: italic; color: var(--ink); line-height: 1.8; }
 
     /* ── LF CARDS ── */
-    .lf-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 2rem;
-      width: 100%;
-    }
+    .lf-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 2rem; width: 100%; }
 
     .lf-card {
       background: var(--white);
@@ -401,36 +499,12 @@
 
     .lf-card:hover { border-color: var(--earth); transform: translateY(-2px); }
 
-    .lf-num {
-      font-size: .6rem;
-      font-weight: 500;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--earth-l);
-      margin-bottom: .6rem;
-    }
-
-    .lf-card h3 {
-      font-size: clamp(.88rem, 2vw, 1rem);
-      font-weight: 500;
-      color: var(--ink);
-      margin-bottom: .35rem;
-      letter-spacing: -.01em;
-    }
-
-    .lf-card p {
-      font-size: clamp(.78rem, 1.8vw, .83rem);
-      color: var(--muted);
-      line-height: 1.6;
-    }
+    .lf-num { font-size: .6rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--earth-l); margin-bottom: .6rem; }
+    .lf-card h3 { font-size: clamp(.88rem, 2vw, 1rem); font-weight: 500; color: var(--ink); margin-bottom: .35rem; letter-spacing: -.01em; }
+    .lf-card p  { font-size: clamp(.78rem, 1.8vw, .83rem); color: var(--muted); line-height: 1.6; }
 
     /* ── CONTACT ── */
-    .contact-sec {
-      background: var(--ink);
-      padding: clamp(3.5rem, 8vw, 6rem) 1.5rem;
-      text-align: center;
-    }
-
+    .contact-sec { background: var(--ink); padding: clamp(3.5rem, 8vw, 6rem) 1.5rem; text-align: center; }
     .contact-sec h2 { color: var(--white); margin-bottom: .8rem; }
     .contact-sec .desc { color: var(--stone); margin: 0 auto 2rem; text-align: center; }
 
@@ -446,19 +520,9 @@
       transition: border-color .2s, color .2s, transform .15s;
     }
 
-    .insta-link:hover {
-      border-color: var(--earth-l);
-      color: var(--earth-l);
-      transform: translateY(-1px);
-    }
-
+    .insta-link:hover { border-color: var(--earth-l); color: var(--earth-l); transform: translateY(-1px); }
     .insta-icon { width: 20px; height: 20px; flex-shrink: 0; }
-
-    .insta-handle {
-      font-size: .88rem;
-      font-weight: 400;
-      letter-spacing: .02em;
-    }
+    .insta-handle { font-size: .88rem; font-weight: 400; letter-spacing: .02em; }
 
     /* ── FOOTER ── */
     footer {
@@ -474,7 +538,6 @@
     }
 
     footer p { font-size: .72rem; color: var(--stone); }
-
     footer ul { list-style: none; display: flex; gap: 1.2rem; flex-wrap: wrap; }
     footer ul a { font-size: .72rem; color: var(--stone); text-decoration: none; transition: color .2s; }
     footer ul a:hover { color: var(--earth); }
@@ -492,39 +555,33 @@
     /* ── RESPONSIVE — TABLET ── */
     @media (max-width: 768px) {
       .nav-links { display: none; }
-
       .about-grid { grid-template-columns: repeat(2, 1fr); }
-
       .interest-list { grid-template-columns: repeat(2, 1fr); }
-
       .gallery { grid-template-columns: repeat(2, 1fr); gap: 6px; }
       .gal-item.gal-tall { grid-row: span 1; aspect-ratio: 4/3; }
-
       .lf-grid { grid-template-columns: repeat(2, 1fr); }
-
       .family-list { max-width: 100%; }
-
       footer { justify-content: center; text-align: center; }
       footer ul { justify-content: center; }
+      .lb-prev { left: -52px; }
+      .lb-next { right: -52px; }
     }
 
     /* ── RESPONSIVE — MOBILE ── */
     @media (max-width: 480px) {
       .nav-cta { display: none; }
-
       .about-grid { grid-template-columns: repeat(2, 1fr); }
-
       .about-item { padding: .7rem .5rem .7rem 0; }
-
       .interest-list { grid-template-columns: 1fr; }
-
       .gallery { grid-template-columns: repeat(2, 1fr); gap: 5px; }
-
       .lf-grid { grid-template-columns: 1fr; }
-
       .quote-wrap { padding: 1.2rem 1.4rem; }
-
       .hero { padding-top: calc(var(--nav-h) + 2.5rem); padding-bottom: 3rem; }
+      .lb-stage { padding: 54px 14px 90px; }
+      .lb-prev { left: 4px; }
+      .lb-next { right: 4px; }
+      .lb-btn { width: 36px; height: 36px; background: rgba(0,0,0,0.5); }
+      .lb-img-wrap { max-width: 100vw; }
     }
 
     /* ── LARGE DESKTOP ── */
@@ -552,9 +609,9 @@
   <!-- HERO -->
   <div class="hero">
     <div class="hero-inner">
-     <div class="photo">
-  <img src="images/portrait.jpg" alt="Ravi" />
-</div>
+      <div class="photo">
+        <img src="images/portrait.jpg" alt="Ravi" />
+      </div>
       <h1>Ravi</h1>
       <p class="hero-sub">Mindful living.<br>Looking for something real and lasting.</p>
       <div class="hero-identity">
@@ -573,7 +630,7 @@
       <div class="sec-in reveal">
         <div class="tag">About</div>
         <h2>Who I am</h2>
-        <p class="desc">I am originally from Goa and currently working as a Network Engineer in Bangalore, with around a deacde of of experience in the IT industry. My work keeps me intellectually engaged, but I try to maintain a healthy balance between professional life and personal well-being.</p>
+        <p class="desc">I am originally from Goa and currently working as a Network Engineer in Bangalore, with around a decade of experience in the IT industry. My work keeps me intellectually engaged, but I try to maintain a healthy balance between professional life and personal well-being.</p>
         <p class="desc">Over time I have come to appreciate a simple and mindful way of living. Happiness, for me, is often found in quiet moments — a sunset by the sea, a peaceful walk, a meaningful conversation, or a simple meal at home. I try to stay grounded through regular workouts, mindful eating, and meditation.</p>
         <p class="desc">I am not very active on social media and generally prefer real connections over a constantly online lifestyle. In the long run, I hope to build a life that is peaceful, balanced, and closer to nature.</p>
 
@@ -581,7 +638,7 @@
           <div class="about-item"><span class="about-k">Age</span><span class="about-v">Mid 30s</span></div>
           <div class="about-item"><span class="about-k">City</span><span class="about-v">Bangalore, KA (from Goa)</span></div>
           <div class="about-item"><span class="about-k">Profession</span><span class="about-v">Network Engineer</span></div>
-          <div class="about-item"><span class="about-k">Education</span><span class="about-v">B.E. Computer Science & Systems Engineering &amp;. Diploma COmputer Engineering</span></div>
+          <div class="about-item"><span class="about-k">Education</span><span class="about-v">B.E. Computer Science &amp; Systems Engineering · Diploma Computer Engineering</span></div>
           <div class="about-item"><span class="about-k">Height &amp; Weight</span><span class="about-v">178 cm · 75 kg</span></div>
           <div class="about-item"><span class="about-k">Lifestyle</span><span class="about-v">Minimalist · Health-conscious</span></div>
         </div>
@@ -620,27 +677,27 @@
         <h2>A few glimpses</h2>
         <p class="desc">Some moments that reflect who I am — at work, in nature, and at home.</p>
         <div class="gallery">
-          <div class="gal-item gal-tall">
+          <div class="gal-item gal-tall" onclick="openLightbox(0)">
             <img src="images/portrait.jpg" alt="Portrait" />
             <div class="gal-label">Portrait</div>
           </div>
-          <div class="gal-item">
+          <div class="gal-item" onclick="openLightbox(1)">
             <img src="images/formal.jpg" alt="Formal" />
             <div class="gal-label">At work</div>
           </div>
-          <div class="gal-item">
+          <div class="gal-item" onclick="openLightbox(2)">
             <img src="images/outdoors.jpg" alt="Outdoors" />
             <div class="gal-label">In nature</div>
           </div>
-          <div class="gal-item">
+          <div class="gal-item" onclick="openLightbox(3)">
             <img src="images/candid.jpg" alt="Candid" />
             <div class="gal-label">Candid</div>
           </div>
-          <div class="gal-item">
+          <div class="gal-item" onclick="openLightbox(4)">
             <img src="images/family.jpg" alt="Family" />
             <div class="gal-label">With family</div>
           </div>
-          <div class="gal-item">
+          <div class="gal-item" onclick="openLightbox(5)">
             <img src="images/lifestyle.jpg" alt="Lifestyle" />
             <div class="gal-label">Day to day</div>
           </div>
@@ -662,7 +719,7 @@
           <div class="family-item"><span class="f-role">Father</span><span class="f-detail">Retired Government Servant</span></div>
           <div class="family-item"><span class="f-role">Mother</span><span class="f-detail">Retired Government Servant</span></div>
           <div class="family-item"><span class="f-role">Elder Sister</span><span class="f-detail">Educator</span></div>
-          <div class="family-item"><span class="f-role">Younger Sister</span><span class="f-detail"> Lawyer</span></div>
+          <div class="family-item"><span class="f-role">Younger Sister</span><span class="f-detail">Lawyer</span></div>
         </div>
       </div>
     </div>
@@ -740,7 +797,37 @@
     </ul>
   </footer>
 
+  <!-- ── LIGHTBOX ── -->
+  <div class="lb-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+
+    <div class="lb-top">
+      <span class="lb-title" id="lb-title"></span>
+      <span class="lb-counter" id="lb-counter"></span>
+      <button class="lb-close" onclick="closeLightbox()" aria-label="Close photo viewer">&times;</button>
+    </div>
+
+    <div class="lb-stage">
+      <div class="lb-img-wrap">
+        <button class="lb-btn lb-prev" onclick="shiftLightbox(-1)" aria-label="Previous photo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </button>
+        <img id="lb-img" src="" alt="" draggable="false" />
+        <button class="lb-btn lb-next" onclick="shiftLightbox(1)" aria-label="Next photo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="lb-bottom" id="lb-thumbs"></div>
+
+  </div>
+
   <script>
+    // ── Scroll reveal ──
     document.documentElement.classList.add('js-ready');
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => {
@@ -748,6 +835,107 @@
       });
     }, { threshold: 0.08 });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // ── Lightbox ──
+    const photos = [
+      { src: 'images/portrait.jpg',  label: 'Portrait'    },
+      { src: 'images/formal.jpg',    label: 'At work'     },
+      { src: 'images/outdoors.jpg',  label: 'In nature'   },
+      { src: 'images/candid.jpg',    label: 'Candid'      },
+      { src: 'images/family.jpg',    label: 'With family' },
+      { src: 'images/lifestyle.jpg', label: 'Day to day'  },
+    ];
+
+    let current = 0;
+
+    const overlay  = document.getElementById('lightbox');
+    const lbImg    = document.getElementById('lb-img');
+    const lbTitle  = document.getElementById('lb-title');
+    const lbCtr    = document.getElementById('lb-counter');
+    const lbThumbs = document.getElementById('lb-thumbs');
+
+    // Build thumbnail strip once
+    photos.forEach((p, i) => {
+      const div = document.createElement('div');
+      div.className = 'lb-thumb';
+      div.id = 'lb-thumb-' + i;
+      div.setAttribute('role', 'button');
+      div.setAttribute('aria-label', p.label);
+      div.onclick = () => goTo(i);
+      div.innerHTML = `<img src="${p.src}" alt="${p.label}" loading="lazy">`;
+      lbThumbs.appendChild(div);
+    });
+
+    function openLightbox(index) {
+      current = index;
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      render(false);
+    }
+
+    function closeLightbox() {
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function goTo(index) {
+      if (index === current) return;
+      current = (index + photos.length) % photos.length;
+      render(true);
+    }
+
+    function shiftLightbox(dir) {
+      current = (current + dir + photos.length) % photos.length;
+      render(true);
+    }
+
+    function render(animate) {
+      const p = photos[current];
+      lbTitle.textContent = p.label;
+      lbCtr.textContent   = `${current + 1} / ${photos.length}`;
+
+      // Update active thumbnail & scroll into view
+      document.querySelectorAll('.lb-thumb').forEach((t, i) => {
+        t.classList.toggle('active', i === current);
+      });
+      const activeThumb = document.getElementById('lb-thumb-' + current);
+      if (activeThumb) {
+        activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+
+      if (animate) {
+        lbImg.classList.add('fading');
+        setTimeout(() => {
+          lbImg.src = p.src;
+          lbImg.alt = p.label;
+          lbImg.classList.remove('fading');
+        }, 200);
+      } else {
+        lbImg.src = p.src;
+        lbImg.alt = p.label;
+      }
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', e => {
+      if (!overlay.classList.contains('active')) return;
+      if (e.key === 'ArrowLeft')  shiftLightbox(-1);
+      if (e.key === 'ArrowRight') shiftLightbox(1);
+      if (e.key === 'Escape')     closeLightbox();
+    });
+
+    // Click dark backdrop to close
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay) closeLightbox();
+    });
+
+    // Touch swipe support
+    let touchStartX = 0;
+    overlay.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    overlay.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 50) shiftLightbox(dx < 0 ? 1 : -1);
+    });
   </script>
 </body>
 </html>

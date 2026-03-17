@@ -15,11 +15,12 @@
   --stone:    #c8bb8a;
   --muted:    #8a7d50;
   --body:     #3d3520;
-  --ink:      #1e1a08;
-  --earth:    #a08520;
-  --earth-l:  #c4a832;
+  --ink:      #32291a;         /* was #1e1a08 — warm dark brown, less stark */
+  --earth:    #c49800;         /* was #a08520 — richer, more saturated gold */
+  --earth-l:  #e0b000;         /* was #c4a832 — brighter gold highlight     */
   --earth-bg: #f5f0d8;
   --nav-h:    52px;
+  --contact-bg: #2a1d0a;       /* deep espresso brown for contact section    */
 }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -74,6 +75,7 @@
 
     .nav-links a {
       font-size: .78rem;
+      font-weight: 600;
       color: var(--muted);
       text-decoration: none;
       transition: color .2s;
@@ -136,6 +138,7 @@
       font-size: clamp(.78rem, 2vw, .88rem);
       color: var(--muted);
       font-weight: 300;
+      font-style: italic;            /* ← italic as requested */
       margin-bottom: 1.6rem;
       line-height: 1.6;
       animation: up .8s .15s ease both;
@@ -369,6 +372,14 @@
       max-height: calc(100vh - 180px);
     }
 
+    /* Transparent shield sits on top of the lightbox image — blocks right-click on the image itself */
+    .lb-img-shield {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      cursor: default;
+    }
+
     #lb-img {
       max-width: 100%;
       max-height: calc(100vh - 180px);
@@ -500,17 +511,21 @@
     .lf-card p  { font-size: clamp(.78rem, 1.8vw, .83rem); color: var(--muted); line-height: 1.6; }
 
     /* ── CONTACT ── */
-    .contact-sec { background: var(--ink); padding: clamp(3.5rem, 8vw, 6rem) 1.5rem; text-align: center; }
-    .contact-sec h2 { color: var(--white); margin-bottom: .8rem; }
-    .contact-sec .desc { color: var(--stone); margin: 0 auto 2rem; text-align: center; }
+    .contact-sec {
+      background: var(--contact-bg);    /* deep espresso brown — warm & earthy */
+      padding: clamp(3.5rem, 8vw, 6rem) 1.5rem;
+      text-align: center;
+    }
+    .contact-sec h2 { color: var(--earth-l); margin-bottom: .8rem; }  /* gold heading pops on dark brown */
+    .contact-sec .desc { color: #b09a72; margin: 0 auto 2rem; text-align: center; }
 
     .insta-link {
       display: inline-flex;
       align-items: center;
       gap: .6rem;
       text-decoration: none;
-      color: var(--stone);
-      border: 1px solid rgba(255,255,255,0.15);
+      color: #b09a72;
+      border: 1px solid rgba(196, 152, 0, 0.3);
       padding: .75rem 1.5rem;
       border-radius: 10px;
       transition: border-color .2s, color .2s, transform .15s;
@@ -609,7 +624,7 @@
         <img src="images/portrait.jpg" alt="Ravi" />
       </div>
       <h2>Ravi</h2>
-      <p class="hero-sub">Simple living. Spiritual curiosity. Meaningful depth.<br>Looking for a genuine connection that grows into something lasting.</p>
+      <p class="hero-sub">Simple living. Thoughtful by nature. Spiritually curious.<br>Looking for a connection rooted in sincerity, depth, and long-term intention.</p>
       <div class="hero-identity">
         <span class="ident-item">Introvert</span>
         <span class="ident-sep">|</span>
@@ -777,11 +792,11 @@
   <!-- CONTACT -->
   <div class="contact-sec" id="contact">
     <div style="max-width:520px; margin:0 auto;">
-      <div class="tag" style="justify-content:center; color:#a07850;">
+      <div class="tag" style="justify-content:center; color:var(--earth);">
         <span>Connect</span>
       </div>
       <h2>Let's start with a hello.</h2>
-      <p class="desc" style="color:var(--stone); max-width:400px; margin:0 auto 2rem; text-align:center;">If something here resonated, reach out. No formalities needed — a simple, honest note is enough.</p>
+      <p class="desc" style="color:#b09a72; max-width:400px; margin:0 auto 2rem; text-align:center;">If something here resonated, reach out. No formalities needed — a simple, honest note is enough.</p>
       <a class="insta-link" href="https://www.instagram.com/ssh_ravi" target="_blank" rel="noopener">
         <svg class="insta-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
@@ -820,6 +835,7 @@
             <polyline points="15 18 9 12 15 6"/>
           </svg>
         </button>
+        <div class="lb-img-shield"></div>
         <img id="lb-img" src="" alt="" draggable="false" />
         <button class="lb-btn lb-next" onclick="shiftLightbox(1)" aria-label="Next photo">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -834,7 +850,26 @@
   </div>
 
   <script>
-    // ── Scroll reveal ──
+    // ── Image protection ──
+    // Disable right-click on all images
+    document.addEventListener('contextmenu', e => {
+      if (e.target.tagName === 'IMG' || e.target.closest('.gallery') || e.target.closest('.lb-overlay')) {
+        e.preventDefault();
+      }
+    });
+
+    // Block Ctrl+S / Cmd+S save
+    document.addEventListener('keydown', e => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+        e.preventDefault();
+      }
+    });
+
+    // Disable drag on all images
+    document.querySelectorAll('img').forEach(img => {
+      img.setAttribute('draggable', 'false');
+      img.addEventListener('dragstart', e => e.preventDefault());
+    });
     document.documentElement.classList.add('js-ready');
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => {

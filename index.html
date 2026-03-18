@@ -15,12 +15,12 @@
   --stone:    #c8bb8a;
   --muted:    #8a7d50;
   --body:     #3d3520;
-  --ink:      #32291a;         /* was #1e1a08 — warm dark brown, less stark */
-  --earth:    #c49800;         /* was #a08520 — richer, more saturated gold */
-  --earth-l:  #e0b000;         /* was #c4a832 — brighter gold highlight     */
+  --ink:      #32291a;
+  --earth:    #c49800;
+  --earth-l:  #e0b000;
   --earth-bg: #f5f0d8;
   --nav-h:    52px;
-  --contact-bg: #2a1d0a;       /* deep espresso brown for contact section    */
+  --contact-bg: #2a1d0a;
 }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -138,7 +138,7 @@
       font-size: clamp(.78rem, 2vw, .88rem);
       color: var(--muted);
       font-weight: 300;
-      font-style: italic;            /* ← italic as requested */
+      font-style: italic;
       margin-bottom: 1.6rem;
       line-height: 1.6;
       animation: up .8s .15s ease both;
@@ -372,7 +372,6 @@
       max-height: calc(100vh - 180px);
     }
 
-    /* Transparent shield sits on top of the lightbox image — blocks right-click on the image itself */
     .lb-img-shield {
       position: absolute;
       inset: 0;
@@ -512,11 +511,11 @@
 
     /* ── CONTACT ── */
     .contact-sec {
-      background: var(--contact-bg);    /* deep espresso brown — warm & earthy */
+      background: var(--contact-bg);
       padding: clamp(3.5rem, 8vw, 6rem) 1.5rem;
       text-align: center;
     }
-    .contact-sec h2 { color: var(--earth-l); margin-bottom: .8rem; }  /* gold heading pops on dark brown */
+    .contact-sec h2 { color: var(--earth-l); margin-bottom: .8rem; }
     .contact-sec .desc { color: #b09a72; margin: 0 auto 2rem; text-align: center; }
 
     .insta-link {
@@ -641,19 +640,16 @@
       <div class="sec-in reveal">
         <div class="tag">About</div>
         <h2>Who I am</h2>
-        <p class="desc">I grew up in Goa, and while it's more background than identity now, I think it shaped something in me — a preference for simplicity, a relaxed pace, and a quiet kind of sincerity that I carry into most things I do. I'm based in Bengaluru now, working as a Network Engineer with close to a decade in IT. Computer networks and network security aren't just what I do — they're what I find genuinely fascinating. There's something about the architecture of how things connect, and how they're protected, that I never quite stop thinking about.</p>
-        <p class="desc"> I'm an introvert by nature, and my life is deliberately low-noise: workouts, mindful eating, meditation, and enough space to think. A good Sunday usually has one thing worth looking forward to — a slow meal, a long walk, or better yet, a ride. I've been a motorcyclist for a while now, and there's something about being on the road that clears the head like nothing else. Someday I want to take that further — long touring routes, unhurried, with good company.</p>
 
+        <p class="desc">I grew up in Goa, and while it's more background than identity now, I think it shaped something in me — a preference for simplicity, a relaxed pace, and a quiet kind of sincerity that I carry into most things I do. I'm based in Bengaluru now, working as a Network Engineer with close to a decade in IT. Computer networks and network security aren't just what I do — they're what I find genuinely fascinating. There's something about the architecture of how things connect, and how they're protected, that I never quite stop thinking about.</p>
+
+        <p class="desc">I'm an introvert by nature, and my life is deliberately low-noise: workouts, mindful eating, meditation, and enough space to think. A good Sunday usually has one thing worth looking forward to — a slow meal, a long walk, or better yet, a ride. I've been a motorcyclist for a while now, and there's something about being on the road that clears the head like nothing else. Someday I want to take that further — long touring routes, unhurried, with good company.</p>
 
         <p class="desc">I'm not someone with deep expertise in any one subject, but I love conversations that actually go somewhere — philosophy, psychology, ideas about how we live and why we make the choices we do. I'm drawn to people who'd rather talk about what matters than about who said what. I don't really discuss people; I'd much rather discuss ideas.</p>
 
-<p class="desc">
-Emotionally, I try to show up with honesty and empathy. I believe how you treat people in ordinary moments says more than any grand gesture, and I'm looking for someone who understands that too.
-</p>
+        <p class="desc">Emotionally, I try to show up with honesty and empathy. I believe how you treat people in ordinary moments says more than any grand gesture, and I'm looking for someone who understands that too.</p>
 
-<p class="desc">
-I'm not in a rush. What I'm hoping to find is a partnership that's steady and considered — built on shared values, emotional maturity, and the kind of comfort that comes from truly knowing someone.
-</p>
+        <p class="desc">I'm not in a rush. What I'm hoping to find is a partnership that's steady and considered — built on shared values, emotional maturity, and the kind of comfort that comes from truly knowing someone.</p>
 
         <div class="about-grid">
           <div class="about-item"><span class="about-k">Age</span><span class="about-v">Mid 30s</span></div>
@@ -861,25 +857,23 @@ I'm not in a rush. What I'm hoping to find is a partnership that's steady and co
 
   <script>
     // ── Image protection ──
-    // Disable right-click on all images
     document.addEventListener('contextmenu', e => {
       if (e.target.tagName === 'IMG' || e.target.closest('.gallery') || e.target.closest('.lb-overlay')) {
         e.preventDefault();
       }
     });
 
-    // Block Ctrl+S / Cmd+S save
     document.addEventListener('keydown', e => {
       if ((e.ctrlKey || e.metaKey) && e.key === 's') {
         e.preventDefault();
       }
     });
 
-    // Disable drag on all images
     document.querySelectorAll('img').forEach(img => {
       img.setAttribute('draggable', 'false');
       img.addEventListener('dragstart', e => e.preventDefault());
     });
+
     document.documentElement.classList.add('js-ready');
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => {
@@ -908,7 +902,6 @@ I'm not in a rush. What I'm hoping to find is a partnership that's steady and co
     const lbCtr    = document.getElementById('lb-counter');
     const lbThumbs = document.getElementById('lb-thumbs');
 
-    // Build thumbnail strip once
     photos.forEach((p, i) => {
       const div = document.createElement('div');
       div.className = 'lb-thumb';
@@ -969,7 +962,6 @@ I'm not in a rush. What I'm hoping to find is a partnership that's steady and co
       }
     }
 
-    // Keyboard navigation
     document.addEventListener('keydown', e => {
       if (!overlay.classList.contains('active')) return;
       if (e.key === 'ArrowLeft')  shiftLightbox(-1);
@@ -977,12 +969,10 @@ I'm not in a rush. What I'm hoping to find is a partnership that's steady and co
       if (e.key === 'Escape')     closeLightbox();
     });
 
-    // Click dark backdrop to close
     overlay.addEventListener('click', e => {
       if (e.target === overlay) closeLightbox();
     });
 
-    // Touch swipe support
     let touchStartX = 0;
     overlay.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
     overlay.addEventListener('touchend', e => {
